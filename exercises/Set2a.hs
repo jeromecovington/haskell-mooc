@@ -91,7 +91,10 @@ isPalindrome str = str == reverse str
 --   palindromify "abracacabra" ==> "acaca"
 
 palindromify :: String -> String
-palindromify s = todo
+palindromify s
+  | null s = s
+  | s == reverse s = s
+  | otherwise = palindromify(drop 1 (take (length s - 1) s))
 
 ------------------------------------------------------------------------------
 -- Ex 7: implement safe integer division, that is, a function that
