@@ -138,8 +138,10 @@ greet first (Just last) = "Hello, " ++ first ++ " " ++ last ++ "!"
 --   safeIndex ["a","b","c"] (-1)  ==> Nothing
 
 safeIndex :: [a] -> Int -> Maybe a
-safeIndex xs i = todo
-
+safeIndex xs i
+  | i < 0 = Nothing
+  | i + 1 > length xs = Nothing
+  | otherwise = Just (xs !! i)
 ------------------------------------------------------------------------------
 -- Ex 10: another variant of safe division. This time you should use
 -- Either to return a string error message.
